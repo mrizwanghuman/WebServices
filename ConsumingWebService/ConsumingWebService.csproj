@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3D97E55F-7CFF-4EA3-919F-0D52F166B275}</ProjectGuid>
+    <ProjectGuid>{02F0F1CE-49CB-4BC4-885D-3BC44205A133}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebServices</RootNamespace>
-    <AssemblyName>WebServices</AssemblyName>
+    <RootNamespace>ConsumingWebService</RootNamespace>
+    <AssemblyName>ConsumingWebService</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -47,6 +47,8 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -74,15 +76,45 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
-    <Content Include="WebService1.asmx" />
+    <Content Include="Connected Services\SoapMine\ConsumingWebService.SoapMine.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SoapMine\ConsumingWebService.SoapMine.getCalucationListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SoapMine\WebService1.disco" />
+    <None Include="Connected Services\SoapMine\configuration91.svcinfo" />
+    <None Include="Connected Services\SoapMine\configuration.svcinfo" />
+    <None Include="Connected Services\SoapMine\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="SoapFarm.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Connected Services\SoapMine\WebService1.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebService1.asmx.cs">
-      <DependentUpon>WebService1.asmx</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="Connected Services\SoapMine\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoapFarm.aspx.cs">
+      <DependentUpon>SoapFarm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SoapFarm.aspx.designer.cs">
+      <DependentUpon>SoapFarm.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\SoapMine\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -97,9 +129,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>62973</DevelopmentServerPort>
+          <DevelopmentServerPort>63059</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:62973/</IISUrl>
+          <IISUrl>http://localhost:63059/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
